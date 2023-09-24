@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class Aplication {
+public class Aplicacao {
     Scanner in;
 
-    Aplication(){
+    Aplicacao(){
         in = new Scanner(System.in);
     }
 
-    public void start(){
+    public void executar(){
     }
 }
