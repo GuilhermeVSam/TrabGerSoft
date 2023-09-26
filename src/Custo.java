@@ -1,4 +1,4 @@
-public class Custos {
+public class Custo {
     private double valor;
     private String descricao;
     private String data; // Talvez utilizar um objeto data?
@@ -6,7 +6,7 @@ public class Custos {
     private Departamento departamento;
 
 
-    public Custos(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
+    public Custo(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
         this.valor = valor;
         this.descricao = descricao;
         this.data = data;
