@@ -2,11 +2,11 @@ public class Custos {
     private double valor;
     private String descricao;
     private String data; // Talvez utilizar um objeto data?
-    private String categoria; // Talvez utilizar enum?
+    private Categorias categoria;
     private Departamento departamento;
 
 
-    public Custos(double valor, String descricao, String data, String categoria, Departamento departamento) {
+    public Custos(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
         this.valor = valor;
         this.descricao = descricao;
         this.data = data;
@@ -26,7 +26,7 @@ public class Custos {
         return data;
     }
 
-    public String getCategoria() {
+    public Categorias getCategoria() {
         return categoria;
     }
 
