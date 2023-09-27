@@ -3,11 +3,11 @@ public class Funcionario {
     private String nome;
     private String departamento;
 
-    public Funcionario(String matricula, String nome, Departamento departamento) {
+    public Funcionario(String matricula, String nome, Deptos departamento) {
         this.matricula = matricula;
         this.nome = nome;
         this.departamento = departamento.getNome();
-        departamento.registraFuncionario(this);
+        /*departamento.registraFuncionario(this);*/
     }
 
     public String getMatricula() {

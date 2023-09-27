@@ -19,9 +19,20 @@ public class Funcionarios {
     @Override
     public String toString() {
         String aux = "";
+        int i = 0;
         for (Funcionario funcionario : funcionarios) {
-            aux += funcionario.toString() + "\n";
+            aux += i + funcionario.toString() + "\n";
+            i++;
         }
         return aux;
+    }
+
+    public Funcionario login(String nome) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getNome().equals(nome)) {
+                return funcionario;
+            }
+        }
+        return null;
     }
 }
