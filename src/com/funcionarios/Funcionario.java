@@ -21,7 +21,9 @@ public class Funcionario {
     }
 
     public String getNome() {
-        return nome;
+        if(nome == null){
+            return "";
+        } else {return nome;}
     }
 
     public void setNome(String nome) {

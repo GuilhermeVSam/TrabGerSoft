@@ -23,7 +23,7 @@ public class Aplicacao {
         System.out.println("+----------------------------------------------------+");
         System.out.println("|                    PAINEL DE DADOS                 |");
         System.out.println("+----------------------------------------------------+");
-        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO:                   |\n" + //usr.getNome() ainda n pq usr ta bugado
+        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO:" + usr.getNome() + "                   |\n" +
                            "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: "+ "        |\n" +
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE T.I.: "+"           |\n" +
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE R.H.: "+"  |\n" +
