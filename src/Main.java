@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) {
+<<<<<<< HEAD
         System.out.println("Hello world!");
+=======
+        Aplicacao app = new Aplicacao();
+        app.executar();
+>>>>>>> release/1.0
     }
 }
