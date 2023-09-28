@@ -1,3 +1,5 @@
+import com.departamentos.Departamento;
+import com.departamentos.Departamentos;
 import com.departamentos.Deptos;
 import com.departamentos.Rh;
 import com.funcionarios.Funcionario;
@@ -7,27 +9,14 @@ import java.util.Scanner;
 
 public class Aplicacao {
     Scanner in;
-    Funcionarios fun;
-    Funcionario usr;
-    Rh rh;
-
+    Funcionarios funcionarios;
+    Funcionario usuario;
+    Departamentos departamentos;
 
     Aplicacao(){
-
         in = new Scanner(System.in);
-        fun = new Funcionarios();
-        rh = new Rh(Deptos.RH.getNome()); //example
-
-        Funcionario f1 = new Funcionario("123", "João", Deptos.TI);
-        Funcionario f2 = new Funcionario("456", "Maria", Deptos.VENDAS);
-        Funcionario f3 = new Funcionario("789", "José", Deptos.RH);
-        Funcionario f4 = new Funcionario("101", "Ana", Deptos.FINANCEIRO);
-        Funcionario f5 = new Funcionario("112", "Carlos", Deptos.ADMINISTRATIVO);
-        fun.add(f1);
-        fun.add(f2);
-        fun.add(f3);
-        fun.add(f4);
-        fun.add(f5);
+        funcionarios = new Funcionarios();
+        departamentos = new Departamentos();
     }
     public void exibirPainel(){
         System.out.println("\n");
@@ -49,11 +38,33 @@ public class Aplicacao {
     }
 
     public void executar(){
+        inicializaDepartamentos();
         System.out.println("Bem vindo ao sistema!");
         System.out.println("Digite seu nome de usuário para continuar: ");
-        fun.listarFuncionarios();
-        usr = fun.login(in.nextLine());
+        funcionarios.listarFuncionarios();
+        usuario = funcionarios.login(in.nextLine());
         System.out.println("Login efetuado com sucesso");
-        exibirPainel();
+        registraFuncionário();
+        System.out.println(funcionarios.listarFuncionarios());
+        System.out.println(departamentos.listarDepartamentos());
+
+    }
+
+    public boolean registraFuncionário(){
+        System.out.println("Cadastro de Funcionário");
+        System.out.println("Informe a Matrícula: ");
+        String matricula = in.nextLine();
+        System.out.println("Informe o nome: ");
+        String nome = in.nextLine();
+        System.out.println("Informe o nome do departamento");
+        String dptName = in.nextLine();
+        Departamento aux = departamentos.getDepartamentoByName(dptName);
+        if(aux == null) return false;
+        return funcionarios.add(new Funcionario(matricula, nome, aux));
+    }
+
+    public void inicializaDepartamentos(){
+        Rh aux = new Rh("Recursos Humanos");
+        departamentos.getDepartamentos().add(aux);
     }
 }
