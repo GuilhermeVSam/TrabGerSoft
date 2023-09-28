@@ -1,16 +1,15 @@
 package com.funcionarios;
-import com.departamentos.Deptos;
+import com.departamentos.Departamento;
 
 public class Funcionario {
     private String matricula;
     private String nome;
-    private String departamento;
+    private Departamento departamento;
 
-    public Funcionario(String matricula, String nome, Deptos departamento) {
+    public Funcionario(String matricula, String nome, Departamento departamento) {
         this.matricula = matricula;
         this.nome = nome;
-        this.departamento = departamento.getNome();
-        /*departamento.registraFuncionario(this);*/
+        this.departamento = departamento;
     }
 
     public String getMatricula() {
@@ -29,16 +28,16 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public String getDepartamento() {
+    public Departamento getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
     @Override
     public String toString() {
-        return "[Matricula: " + this.matricula + " - Nome: " + this.nome + " - com.departamentos.Departamento: " + this.departamento + "]";
+        return "[Matricula: " + this.matricula + " - Nome: " + this.nome + " - Departamento: " + this.departamento.getNome() + "]";
     }
 }
