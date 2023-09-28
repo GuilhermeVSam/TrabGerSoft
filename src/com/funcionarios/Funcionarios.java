@@ -1,10 +1,12 @@
+package com.funcionarios;
+
 import java.util.ArrayList;
 
 public class Funcionarios {
 
     private ArrayList<Funcionario> funcionarios;
 
-    Funcionarios(){
+    public Funcionarios(){
         this.funcionarios = new ArrayList<Funcionario>();
     }
 

@@ -1,3 +1,5 @@
+package com.departamentos;
+
 public enum Deptos {
     TI("TI"),
     RH("RH"),
