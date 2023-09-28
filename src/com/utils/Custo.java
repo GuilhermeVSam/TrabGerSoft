@@ -1,3 +1,7 @@
+package com.utils;
+
+import com.departamentos.Departamento;
+
 public class Custo {
     private double valor;
     private String descricao;

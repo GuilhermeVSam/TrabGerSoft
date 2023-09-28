@@ -1,13 +1,22 @@
+import com.departamentos.Deptos;
+import com.departamentos.Rh;
+import com.funcionarios.Funcionario;
+import com.funcionarios.Funcionarios;
+
 import java.util.Scanner;
 
 public class Aplicacao {
     Scanner in;
     Funcionarios fun;
     Funcionario usr;
+    Rh rh;
+
 
     Aplicacao(){
+
         in = new Scanner(System.in);
         fun = new Funcionarios();
+        rh = new Rh(Deptos.RH.getNome()); //example
 
         Funcionario f1 = new Funcionario("123", "João", Deptos.TI);
         Funcionario f2 = new Funcionario("456", "Maria", Deptos.VENDAS);

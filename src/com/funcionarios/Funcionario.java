@@ -1,3 +1,6 @@
+package com.funcionarios;
+import com.departamentos.Deptos;
+
 public class Funcionario {
     private String matricula;
     private String nome;
@@ -36,6 +39,6 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "[Matricula: " + this.matricula + " - Nome: " + this.nome + " - Departamento: " + this.departamento + "]";
+        return "[Matricula: " + this.matricula + " - Nome: " + this.nome + " - com.departamentos.Departamento: " + this.departamento + "]";
     }
 }
