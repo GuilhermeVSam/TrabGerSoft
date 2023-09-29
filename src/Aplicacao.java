@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Aplicacao {
     Scanner in;
     Funcionarios funcionarios;
-    Funcionario usuario = new Funcionario("123","Computador", null); // não modifica isso a menos q o departamento volte a funcionar, eu não consegui usar um objeto dpt
+    Funcionario usuario; // usuário logado
     Departamentos departamentos;
     RegistroCustos listaCustos;
     int opcao;
@@ -25,8 +25,10 @@ public class Aplicacao {
         departamentos = new Departamentos();
         listaCustos = new RegistroCustos();
 
-        funcionarios.add(new Funcionario("123abc", "Robson", Deptos.ADMINISTRATIVO));
-        funcionarios.add(new Funcionario("987zyx", "Carla", Deptos.MARKETING));
+
+        funcionarios.add(new Funcionario("123","", Deptos.ADMINISTRATIVO));
+        funcionarios.add(new Funcionario("456", "Robson", Deptos.ENGENHARIA));
+        funcionarios.add(new Funcionario("789", "Carla", Deptos.MARKETING));
     }
     private void selecao () {
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -110,7 +112,7 @@ public class Aplicacao {
     public void exibirPainel(){
         ArrayList<Custo> c = listaCustos.getRegistroCustos();
         int mesAtual = 10;
-        
+
         double custoMes = listaCustos.somaCustosPorMes(mesAtual);
 
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -120,14 +122,14 @@ public class Aplicacao {
                                                       "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
 
         System.out.println("| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL (Outubro): R$" + custoMes);
-        
+
         for (Deptos dep : Deptos.values()){
             double custoDep = 0;
 
             for (Custo custo : c) {
                 if (custo.getDepartamento() == dep && custo.getMes() >= mesAtual -3) {
                     custoDep += custo.getValor();
-                } 
+                }
             }
 
             System.out.println("VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
@@ -139,13 +141,20 @@ public class Aplicacao {
     public void executar(){
         System.out.println("Bem vindo ao sistema!");
         listarFuncionarios();
-        System.out.println("Digite seu nome de usuário para continuar: ");
-        funcionarios.login(in.nextLine());
+
+        while (usuario == null) {
+            System.out.println("Digite seu nome de usuário para continuar: ");
+            String nome = in.nextLine();
+            usuario = funcionarios.login(nome);
+        }
+
         System.out.println("Login efetuado com succeso!");
         System.out.println("Por favor, digite uma opção: ");
+
         do {
             selecao();
             opcao = in.nextInt();
+            in.nextLine();
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
                             // seria mesmo, mas a gente confia no usuário :)
                 case 1:
@@ -174,7 +183,7 @@ public class Aplicacao {
             }
         } while (opcao != 0);
 
-        System.out.println("Desligando...");  
+        System.out.println("Desligando...");
     }
 
       public static void exibirMenu() {
