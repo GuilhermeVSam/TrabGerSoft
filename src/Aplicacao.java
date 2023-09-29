@@ -80,7 +80,7 @@ public class Aplicacao {
         selecao();
         opcao = in.nextInt();
         do {
-            switch (opcao) {
+            switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
 
                 case 1:
                     listarFuncionarios();
@@ -96,7 +96,7 @@ public class Aplicacao {
                     pesquisarRegistro();          //implementar
                     excluirRegistroDeCusto();
                     break;
-                case 5:
+                case 5://funcionando
                     exibirPainel();
                     selecao();
                     opcao = in.nextInt();
@@ -107,7 +107,7 @@ public class Aplicacao {
                 case 7:
                     novaFuncionalidade2();           //implementar
                     break;
-                case 8:
+                case 8://funcionando
                     break;
                 default:
                     System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
