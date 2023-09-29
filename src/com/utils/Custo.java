@@ -16,8 +16,6 @@ public class Custo {
     private Departamentos departamentos;
     private List<Comentario> comentarios;
 
-    ArrayList<Custo> registroCustos = Departamento.getCustos();
-
 
     public Custo(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
         this.valor = valor;
@@ -26,6 +24,9 @@ public class Custo {
         this.categoria = categoria;
         this.departamento = departamento;
         this.comentarios = new ArrayList<>();
+    }
+
+    public Custo(String descricao2, double valor2) {
     }
 
     public double getValor() {
@@ -99,6 +100,7 @@ public class Custo {
     }
 
     public void excluirCustoRecente(){
+        ArrayList<Custo> registroCustos = departamento.getCustos();
         if(!registroCustos.isEmpty()){
             registroCustos.remove(registroCustos.size() - 1);
             System.out.println("Custo mais recente removido com sucesso!");
