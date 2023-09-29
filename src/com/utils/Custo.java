@@ -77,5 +77,17 @@ public class Custo {
         System.out.println("Custo adicionado com sucesso.");
 
     }
+
+    public void excluirCustoRecente(){
+        if(!registroCustos.isEmpty()){
+            registroCustos.remove(registroCustos.size() - 1);
+            System.out.println("Custo mais recente removido com sucesso!");
+        } else {
+            System.out.println("Não há custos para excluir.");
+        }
+    }
+
+
+
      
 }
