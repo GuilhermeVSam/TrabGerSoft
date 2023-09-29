@@ -32,17 +32,17 @@ public class Aplicacao {
     }
     private void selecao () {
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("|                                        OPÇÕES                                         |"); // alguem centraliza isso? mó mão
+        System.out.println("|                                        OPÇÕES                                         |");
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("| 1 - LISTAR FUNCIONÁRIOS                                  \n" +
-                           "| 2 - INCLUIR NOVO FUNCIONÁRIO                                            \n" +
-                           "| 3 - INSERIR NOVO REGISTRO DE CUSTO                      \n" +
-                           "| 4 - PESQUISAR REGISTROS                       \n" +
-                           "| 5 - EXCLUIR REGISTROS                       \n" +
-                           "| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                      \n" +
-                           "| 7 - FUNCIONALIDADE NOVA 1                \n" +
-                           "| 8 - FUNCIONALIDADE NOVA 2               \n" +
-                           "| 0 - SAIR                       ");
+        System.out.println("| 1 - LISTAR FUNCIONÁRIOS                                                               |");
+        System.out.println("| 2 - INCLUIR NOVO FUNCIONÁRIO                                                          |");
+        System.out.println("| 3 - INSERIR NOVO REGISTRO DE CUSTO                                                    |");
+        System.out.println("| 4 - PESQUISAR REGISTROS                                                               |");
+        System.out.println("| 5 - EXCLUIR REGISTROS                                                                 |");
+        System.out.println("| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                                      |");
+        System.out.println("| 7 - FUNCIONALIDADE NOVA 1                                                             |");
+        System.out.println("| 8 - FUNCIONALIDADE NOVA 2                                                             |");
+        System.out.println("| 0 - SAIR                                                                              |");
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
     private void listarFuncionarios () {
@@ -108,7 +108,7 @@ public class Aplicacao {
     }
     private void excluirRegistroDeCusto() {
         listaCustos.excluirCustoRecente();
-    }; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
+    }
     public void exibirPainel(){
         ArrayList<Custo> c = listaCustos.getRegistroCustos();
         int mesAtual = 10;
@@ -116,11 +116,10 @@ public class Aplicacao {
         double custoMes = listaCustos.somaCustosPorMes(mesAtual);
 
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("|                                        PAINEL DE DADOS                                |");           //endireita
+        System.out.println("|                                        PAINEL DE DADOS                                |");
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: "+usuario.getNome()+"                                  \n" +            //placeholders inseridos
-                                                      "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
-
+        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: " + usuario.getNome());
+        System.out.println("| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana");
         System.out.println("| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL (Outubro): R$" + custoMes);
 
         for (Deptos dep : Deptos.values()){
@@ -132,7 +131,7 @@ public class Aplicacao {
                 }
             }
 
-            System.out.println("VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
+            System.out.println("|VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
         }
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
@@ -185,40 +184,5 @@ public class Aplicacao {
 
         System.out.println("Desligando...");
     }
-
-      public static void exibirMenu() {
-
-        System.out.println("Menu");
-        System.out.println("1- Listar Funcionários");
-        System.out.println("2- Registrar Funcionário");
-        System.out.println("3- Novo Registro de Custo");
-        System.out.println("4- Pesquisar Registro e Excluir Custo");
-        System.out.println("5- Exibir Painel");
-        System.out.println("6- Nova Funcionalidade 1: ");
-        System.out.println("7- Nova Funcionalidade 2: ");
-        System.out.println("8- Sair ");
-        System.out.println("Escolha uma opção ");
-     }
-
 }
-    /*public void inicializaDepartamentos(){           esse bixo ta inutil por enquanto
-        Rh aux = new Rh("Recursos Humanos");
-        departamentos.getDepartamentos().add(aux);
-    }*/
-     //queria fazer isso:
-    //  RegistroCusto registro = new RegistroCusto(100.0, "Aquisição de material", new Date(), "Aquisição de Bens", "Departamento A");
-      //  Comentario comentario1 = new Comentario("Ótima compra!", "Clara");
-     //   Comentario comentario2 = new Comentario("Custo elevado!", "Maria");
 
-       // registro.adicionarComentario(comentario1);
-       // registro.adicionarComentario(comentario2);
-
-       // List<Comentario> comentariosDoRegistro = registro.listarComentarios();
-       // for (Comentario comentario : comentariosDoRegistro) {
-       // comentario.exibirComentario();
-
-    //public void exibirComentario() {
-    // System.out.println("Autor:"+ autor);
-   // System.out.println("Data:" + data);
-   // System.out.println("Comentario:" + texto);
-   // }
