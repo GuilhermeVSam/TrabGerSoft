@@ -3,6 +3,9 @@
 ## Sobre o projeto
 Projeto para a disciplina de gerenciamento de configuração de software.
 
+## Link do Relatório
+- Para fazer a leitura do relatório acesse: [https://brpucrs-my.sharepoint.com/:w:/g/personal/cecilia_ricalcati_edu_pucrs_br/EdVp15KUZqBCram0ol_aYCEBvyGJiCJdrPI3YMSEiTCSAw?e=RtYP3Q].
+
 ## Colaboração
 
 - O projeto será desenvolvido com a filosofia do [git flow](https://nvie.com/posts/a-successful-git-branching-model/).
