@@ -12,8 +12,8 @@ public class Funcionarios {
         this.funcionarios = new ArrayList<Funcionario>();
     }
 
-    public boolean add(Custo novoCusto) {
-        return this.funcionarios.add(novoCusto);
+    public boolean add(Funcionario funcionario) {
+        return this.funcionarios.add(funcionario);
     }
 
     public String listarFuncionarios() {
@@ -26,6 +26,7 @@ public class Funcionarios {
                 return funcionario;
             }
         }
+        System.out.println("Nome de usuário inexistente.");
         return null;
     }
 
