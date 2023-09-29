@@ -1,12 +1,13 @@
 package com.funcionarios;
-import com.departamentos.Departamento;
+
+import com.departamentos.Deptos;
 
 public class Funcionario {
     private String matricula;
     private String nome;
-    private Departamento departamento;
+    private Deptos departamento;
 
-    public Funcionario(String matricula, String nome, Departamento departamento) {
+    public Funcionario(String matricula, String nome, Deptos departamento) {
         this.matricula = matricula;
         this.nome = nome;
         this.departamento = departamento;
@@ -21,20 +22,22 @@ public class Funcionario {
     }
 
     public String getNome() {
-        if(nome == null){
+        if (nome == null) {
             return "";
-        } else {return nome;}
+        } else {
+            return nome;
+        }
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Departamento getDepartamento() {
+    public Deptos getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
+    public void setDepartamento(Deptos departamento) {
         this.departamento = departamento;
     }
 
