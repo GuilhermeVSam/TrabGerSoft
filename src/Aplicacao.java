@@ -18,7 +18,7 @@ public class Aplicacao {
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
     }
-    /* 
+    
     public void exibirPainel(){
         System.out.println("\n");
         System.out.println("+----------------------------------------------------+");
@@ -37,7 +37,7 @@ public class Aplicacao {
                            "| 99 - Sair                            |");
         System.out.println("+--------------------------------------+\n\n");
     }
-*/
+
     
     
     public void executar(){
