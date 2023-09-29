@@ -18,4 +18,17 @@ public enum Deptos {
     public String getNome() {
         return nome;
     }
+
+    /**
+     * Retorna um departamento a partir de uma string
+     * @return
+     */
+    public static Deptos fromString(String str) {
+        for (Deptos dep : Deptos.values()) {
+            if (dep.nome.equalsIgnoreCase(str)) {
+                return dep;
+            }
+        }
+        return null;
+    }
 }
