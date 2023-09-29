@@ -32,15 +32,15 @@ public class Aplicacao {
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        OPÇÕES                                         |");
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("| 1 - LISTAR FUNCIONÁRIOS                                                                ");
-        System.out.println("| 2 - INCLUIR NOVO FUNCIONÁRIO                                                           ");
-        System.out.println("| 3 - INSERIR NOVO REGISTRO DE CUSTO                                                     ");
-        System.out.println("| 4 - PESQUISAR REGISTROS                                                                ");
-        System.out.println("| 5 - EXCLUIR REGISTROS                                                                  ");
-        System.out.println("| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                                       ");
-        System.out.println("| 7 - FUNCIONALIDADE NOVA 1                                                              ");
-        System.out.println("| 8 - FUNCIONALIDADE NOVA 2                                                              ");
-        System.out.println("| 0 - SAIR                                                                               ");
+        System.out.println("| 1 - LISTAR FUNCIONÁRIOS                                                               |");
+        System.out.println("| 2 - INCLUIR NOVO FUNCIONÁRIO                                                          |");
+        System.out.println("| 3 - INSERIR NOVO REGISTRO DE CUSTO                                                    |");
+        System.out.println("| 4 - PESQUISAR REGISTROS                                                               |");
+        System.out.println("| 5 - EXCLUIR REGISTROS                                                                 |");
+        System.out.println("| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                                      |");
+        System.out.println("| 7 - FUNCIONALIDADE NOVA 1                                                             |");
+        System.out.println("| 8 - FUNCIONALIDADE NOVA 2                                                             |");
+        System.out.println("| 0 - SAIR                                                                              |");
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
     private void listarFuncionarios () {
