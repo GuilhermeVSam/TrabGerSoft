@@ -18,6 +18,7 @@ public class Aplicacao {
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
     }
+    
     public void exibirPainel(){
         System.out.println("\n");
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -37,6 +38,8 @@ public class Aplicacao {
         System.out.println("+-----------------------------------------------------------------------------------+\n\n");
     }
 
+    
+    
     public void executar(){
         inicializaDepartamentos();
         System.out.println("Bem vindo ao sistema!");
@@ -45,6 +48,7 @@ public class Aplicacao {
         usuario = funcionarios.login(in.nextLine());
         System.out.println("Login efetuado com sucesso");
         registraFuncionário();
+        removerFuncionario();
         System.out.println(funcionarios.listarFuncionarios());
         System.out.println(departamentos.listarDepartamentos());
 
@@ -62,9 +66,25 @@ public class Aplicacao {
         if(aux == null) return false;
         return funcionarios.add(new Funcionario(matricula, nome, aux));
     }
-
+    
     public void inicializaDepartamentos(){
         Rh aux = new Rh("Recursos Humanos");
         departamentos.getDepartamentos().add(aux);
     }
-}
+
+    public void removerFuncionario(){
+        System.out.println("Remoção de Funcionário: ");
+        System.out.println("Informe a matricula do funcionario que deseja remover: ");
+        String matricula = in.nextLine();
+
+        boolean removido = funcionarios.removerFuncionarioPorMatricula(matricula);
+
+        if(removido){
+            System.out.println("Funcionário removido com sucesso!");
+            System.out.println("");
+        }else{
+            System.out.println("Erro. Não existe nenhum funcionário com a matricula informada.");
+            System.out.println("");
+        }
+        }
+    }
