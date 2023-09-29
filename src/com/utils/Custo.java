@@ -1,4 +1,6 @@
 package com.utils;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.departamentos.Departamento;
 
@@ -8,6 +10,7 @@ public class Custo {
     private String data; // Talvez utilizar um objeto data?
     private Categorias categoria;
     private Departamento departamento;
+    private List<Comentario> comentarios;
 
 
     public Custo(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
@@ -16,6 +19,7 @@ public class Custo {
         this.data = data;
         this.categoria = categoria;
         this.departamento = departamento;
+        this.comentarios = new ArrayList<>();
     }
 
     public double getValor() {
@@ -37,4 +41,11 @@ public class Custo {
     public Departamento getDepartamento() {
         return departamento;
     }
+     public void adicionarComentario(Comentario comentario) {
+        comentarios.add(comentario);
+     }
+     public List<Comentario> listarComentarios() {
+        return comentarios;
+     }
+     
 }
