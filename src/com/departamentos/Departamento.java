@@ -10,6 +10,14 @@ public abstract class Departamento{
     private Funcionarios funcionarios;
     private ArrayList<Custo> custos;
 
+    public ArrayList<Custo> getCustos() {
+        return custos;
+    }
+
+    public void setCustos(ArrayList<Custo> custos) {
+        this.custos = custos;
+    }
+
     public Departamento(String nome) {
         this.nome = nome;
         this.funcionarios = new Funcionarios();

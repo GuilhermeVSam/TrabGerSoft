@@ -17,6 +17,7 @@ public class Aplicacao {
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
+
     }
     public void exibirPainel(){
         System.out.println("\n");
@@ -67,4 +68,21 @@ public class Aplicacao {
         Rh aux = new Rh("Recursos Humanos");
         departamentos.getDepartamentos().add(aux);
     }
+     //queria fazer isso:
+    //  RegistroCusto registro = new RegistroCusto(100.0, "Aquisição de material", new Date(), "Aquisição de Bens", "Departamento A");
+      //  Comentario comentario1 = new Comentario("Ótima compra!", "Clara");
+     //   Comentario comentario2 = new Comentario("Custo elevado!", "Maria");
+
+       // registro.adicionarComentario(comentario1);
+       // registro.adicionarComentario(comentario2);
+
+       // List<Comentario> comentariosDoRegistro = registro.listarComentarios();
+       // for (Comentario comentario : comentariosDoRegistro) {
+       // comentario.exibirComentario();
+    
+    //public void exibirComentario() {   
+    // System.out.println("Autor:"+ autor);  
+   // System.out.println("Data:" + data);  
+   // System.out.println("Comentario:" + texto);
+   // }
 }
