@@ -80,6 +80,13 @@ public class Aplicacao {
         selecao();
         opcao = in.nextInt();
         do {
+            exibirPainel();
+            try {
+               opcao = Integer.parseInt(in.nextLine());     
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida. Por gentileza, insira um n°.");
+                continue;
+            }
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
 
                 case 1:
@@ -123,20 +130,4 @@ public class Aplicacao {
         departamentos.getDepartamentos().add(aux);
     }*/
     }
-     //queria fazer isso:
-    //  RegistroCusto registro = new RegistroCusto(100.0, "Aquisição de material", new Date(), "Aquisição de Bens", "Departamento A");
-      //  Comentario comentario1 = new Comentario("Ótima compra!", "Clara");
-     //   Comentario comentario2 = new Comentario("Custo elevado!", "Maria");
-
-       // registro.adicionarComentario(comentario1);
-       // registro.adicionarComentario(comentario2);
-
-       // List<Comentario> comentariosDoRegistro = registro.listarComentarios();
-       // for (Comentario comentario : comentariosDoRegistro) {
-       // comentario.exibirComentario();
-
-    //public void exibirComentario() {
-    // System.out.println("Autor:"+ autor);
-   // System.out.println("Data:" + data);
-   // System.out.println("Comentario:" + texto);
-   // }
+     

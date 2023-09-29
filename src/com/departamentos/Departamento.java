@@ -32,4 +32,8 @@ public abstract class Departamento{
         return this.funcionarios.add(funcionario);
     }
 
+    public static Departamento valueOf(String departamentoEntrada) {
+        return null;
+    }
+
 }
