@@ -5,6 +5,7 @@ import com.departamentos.Rh;
 import com.funcionarios.Funcionario;
 import com.funcionarios.Funcionarios;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Aplicacao {
@@ -18,22 +19,29 @@ public class Aplicacao {
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
+
+        funcionarios.add(new Funcionario("123abc", "Robson", Deptos.ADMINISTRATIVO));
+        funcionarios.add(new Funcionario("987zyx", "Carla", Deptos.MARKETING));
     }
     private void selecao () {
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        OPÇÕES                                         |"); // alguem centraliza isso? mó mão
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("| 1 - MUDAR FUNCIONÁRIO LOGADO                                  \n" +
+        System.out.println("| 1 - LISTAR FUNCIONÁRIOS                                  \n" +
                            "| 2 - INCLUIR NOVO FUNCIONÁRIO                                            \n" +
                            "| 3 - INSERIR NOVO REGISTRO DE CUSTO                      \n" +
                            "| 4 - PESQUISAR REGISTROS                       \n" +
-                           "| 5 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                      \n" +
-                           "| 6 - FUNCIONALIDADE NOVA 1                \n" +
-                           "| 7 - FUNCIONALIDADE NOVA 2               \n" +
-                           "| 8 - SAIR                       ");
+                           "| 5 - EXCLUIR REGISTROS                       \n" +
+                           "| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                      \n" +
+                           "| 7 - FUNCIONALIDADE NOVA 1                \n" +
+                           "| 8 - FUNCIONALIDADE NOVA 2               \n" +
+                           "| 0 - SAIR                       ");
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
-    private void listarFuncionarios () {}; //implementar, precisa que funcionarios existam antes
+    private void listarFuncionarios () {
+        System.out.println("Funcionários: ");
+        System.out.println(funcionarios);
+    }; //implementar, precisa que funcionarios existam antes
     private boolean registraFuncionario(){
         System.out.println("Cadastro de Funcionário");
         System.out.println("Informe a Matrícula: ");
@@ -42,8 +50,12 @@ public class Aplicacao {
         String nome = in.nextLine();
         System.out.println("Informe o nome do departamento");
         String dptName = in.nextLine();
-        Departamento aux = departamentos.getDepartamentoByName(dptName);
-        if(aux == null) return false;
+        Deptos aux = Deptos.fromString(dptName);
+        if(aux == null) {
+            System.out.println("Departamento não encontrado.");
+            return false;
+        }
+        System.out.println("Funcionario registrado!");
         return funcionarios.add(new Funcionario(matricula, nome, aux));
     } //implementar deve ser facil
 
@@ -76,15 +88,17 @@ public class Aplicacao {
         System.out.println("Digite seu nome de usuário para continuar: ");
         usuario.setNome(in.nextLine());
         System.out.println("Login efetuado com succeso!");
-        System.out.println("Por favor, digite uma opção: ");
-        selecao();
-        opcao = in.nextInt();
         do {
+            System.out.println("Por favor, digite uma opção: ");
+            selecao();
+            opcao = in.nextInt();
+            in.nextLine();
+
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
+                            // seria mesmo, mas a gente confia no usuário :)
 
                 case 1:
                     listarFuncionarios();
-                    opcao = in.nextInt();//implementar
                     break;
                 case 2:
                     registraFuncionario();        //implementar
@@ -94,28 +108,28 @@ public class Aplicacao {
                     break;
                 case 4:
                     pesquisarRegistro();          //implementar
+                    break;
+                case 5:
                     excluirRegistroDeCusto();
                     break;
-                case 5://funcionando
+                case 6://funcionando
                     exibirPainel();
                     selecao();
-                    opcao = in.nextInt();
-                    break;
-                case 6:
-                    novaFuncionalidade1();             //implementar
                     break;
                 case 7:
+                    novaFuncionalidade1();             //implementar
+                    break;
+                case 8:
                     novaFuncionalidade2();           //implementar
                     break;
-                case 8://funcionando
+                case 0://funcionando
                     break;
                 default:
                     System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
-                    opcao = in.nextInt();
                     break;
-
             }
         } while (opcao != 8);
+
         System.out.println("Bye-Bye");
     }
     /*public void inicializaDepartamentos(){           esse bixo ta inutil por enquanto
