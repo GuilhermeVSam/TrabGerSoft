@@ -1,31 +1,21 @@
 package com.funcionarios;
 
 import java.util.ArrayList;
+
 public class Funcionarios {
 
     private ArrayList<Funcionario> funcionarios;
 
-    public Funcionarios(){
+    public Funcionarios() {
         this.funcionarios = new ArrayList<Funcionario>();
     }
 
-    public boolean add(Funcionario funcionario){
+    public boolean add(Funcionario funcionario) {
         return this.funcionarios.add(funcionario);
     }
 
-    public String listarFuncionarios(){
+    public String listarFuncionarios() {
         return toString();
-    }
-
-    @Override
-    public String toString() {
-        String aux = "";
-        int i = 0;
-        for (Funcionario funcionario : funcionarios) {
-            aux += i + funcionario.toString() + "\n";
-            i++;
-        }
-        return aux;
     }
 
     public Funcionario login(String nome) {
@@ -46,5 +36,17 @@ public class Funcionarios {
             }
         }
         return false;
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder aux = new StringBuilder();
+        int i = 0;
+        for (Funcionario funcionario : funcionarios) {
+            aux.append(i).append(funcionario.toString()).append("\n");
+            i++;
+        }
+        return aux.toString();
     }
 }
