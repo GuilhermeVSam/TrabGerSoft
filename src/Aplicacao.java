@@ -127,7 +127,7 @@ public class Aplicacao {
                     System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
                     break;
             }
-        } while (opcao != 8);
+        } while (opcao != 0);
 
         System.out.println("Bye-Bye");
     }
