@@ -1,6 +1,7 @@
 package com.utils;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.departamentos.Departamento;
 
@@ -11,6 +12,8 @@ public class Custo {
     private Categorias categoria;
     private Departamento departamento;
     private List<Comentario> comentarios;
+
+    ArrayList<Custo> registroCustos = Departamento.getCustos();
 
 
     public Custo(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
@@ -47,5 +50,32 @@ public class Custo {
      public List<Comentario> listarComentarios() {
         return comentarios;
      }
+
+    public void registrarCustos(){
+        Scanner tec = new Scanner(System.in);
+
+        System.out.println("Informe o valor do custo: ");
+        valor = tec.nextDouble();
+
+        System.out.println("Informe a descrição do custo: ");
+        descricao = tec.nextLine();
+
+        System.out.println("Informe a data do custo: ");
+        data = tec.nextLine();
+
+        System.out.println("Informe a categoria do custo(AQUISIÇÃO, MANUTENÇÃO, OUTROS): ");
+        String categoriaEntrada = tec.nextLine();
+        Categorias categoria = Categorias.valueOf(categoriaEntrada);
+
+        System.out.println("Informe o departamento do custo: ");
+        String departamentoEntrada = tec.nextLine();
+        Departamento departamento = Departamento.valueOf(departamentoEntrada);
+
+        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento);
+
+        registroCustos.add(novoCusto);
+        System.out.println("Custo adicionado com sucesso.");
+
+    }
      
 }
