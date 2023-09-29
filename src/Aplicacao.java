@@ -1,12 +1,12 @@
 import com.departamentos.Departamento;
 import com.departamentos.Departamentos;
 import com.departamentos.Deptos;
-import com.departamentos.Rh;
 import com.funcionarios.Funcionario;
 import com.funcionarios.Funcionarios;
+import com.utils.Categorias;
 import com.utils.Custo;
+import com.utils.RegistroCustos;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Aplicacao {
@@ -14,12 +14,14 @@ public class Aplicacao {
     Funcionarios funcionarios;
     Funcionario usuario = new Funcionario("123","Computador", null); // não modifica isso a menos q o departamento volte a funcionar, eu não consegui usar um objeto dpt
     Departamentos departamentos;
+    RegistroCustos listaCustos;
     int opcao;
 
     Aplicacao(){
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
+        listaCustos = new RegistroCustos();
 
         funcionarios.add(new Funcionario("123abc", "Robson", Deptos.ADMINISTRATIVO));
         funcionarios.add(new Funcionario("987zyx", "Carla", Deptos.MARKETING));
@@ -61,9 +63,40 @@ public class Aplicacao {
     }
 
     // cadastrar uns departamentos, quem sabe usar enum
-    private void novoRegistroDeCusto() {}; // implementar,
+    private void novoRegistroDeCusto() {
+        System.out.println("Informe o valor do custo: ");
+        double valor = in.nextDouble();
+        in.nextLine();
+
+        System.out.println("Informe a descrição do custo: ");
+        String descricao = in.nextLine();
+
+        System.out.println("Informe a data do custo: ");
+        String data = in.nextLine();
+
+        System.out.println("Informe a categoria do custo(AQUISIÇÃO, MANUTENÇÃO, OUTROS): ");
+        String categoriaEntrada = in.nextLine();
+        Categorias categoria = Categorias.fromString(categoriaEntrada);
+
+        System.out.println("Informe o departamento do custo (TI, RH, FINANCEIRO, ...): ");
+        String departamentoEntrada = in.nextLine();
+
+        // Obter o departamento usando o método getDepartamentoByName da classe Departamentos
+        Deptos departamento = Deptos.fromString(departamentoEntrada);
+
+        if (departamento == null) {
+            System.out.println("Departamento não encontrado.");
+            return;
+        }
+
+        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento);
+
+        listaCustos.registrarCustos(novoCusto);
+    }
     private void pesquisarRegistro() {}; //  impementar esse eu realmnente n tenho ideia
-    private void excluirRegistroDeCusto() {}; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
+    private void excluirRegistroDeCusto() {
+        listaCustos.excluirCustoRecente();
+    }; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
     public void exibirPainel(){
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        PAINEL DE DADOS                                |");           //endireita
@@ -87,7 +120,8 @@ public class Aplicacao {
     public void executar(){
         System.out.println("Bem vindo ao sistema!");
         System.out.println("Digite seu nome de usuário para continuar: ");
-        usuario.setNome(in.nextLine());
+        listarFuncionarios();
+        funcionarios.login(in.nextLine());
         System.out.println("Login efetuado com succeso!");
         System.out.println("Por favor, digite uma opção: ");
         selecao();
@@ -145,38 +179,11 @@ public class Aplicacao {
         System.out.println("Escolha uma opção ");
      }
 
-         public static void novoRegistroDeCusto {
-          Scanner in = new Scanner(System.in);
-          System.out.print("Digite a descrição do custo: ");
-          String descricao = in.nextLine();
-          System.out.print("Digite o valor do custo:");
-          double valor = Double.parseDouble(in.nextLine());
-
-          Custo novoCusto = new Custo (descricao, valor);
-          Funcionarios listaCustos;
-         listaCustos.add(novoCusto);
-          System.out.println("Registro de custo criado com sucesso");
-         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     }
+}
     /*public void inicializaDepartamentos(){           esse bixo ta inutil por enquanto
         Rh aux = new Rh("Recursos Humanos");
         departamentos.getDepartamentos().add(aux);
     }*/
-    }
      //queria fazer isso:
     //  RegistroCusto registro = new RegistroCusto(100.0, "Aquisição de material", new Date(), "Aquisição de Bens", "Departamento A");
       //  Comentario comentario1 = new Comentario("Ótima compra!", "Clara");
