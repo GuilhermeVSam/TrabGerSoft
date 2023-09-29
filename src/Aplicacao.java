@@ -96,12 +96,11 @@ public class Aplicacao {
 
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
                             // seria mesmo, mas a gente confia no usuário :)
-
                 case 1:
                     listarFuncionarios();
                     break;
                 case 2:
-                    registraFuncionario();        //implementar
+                    registraFuncionario();
                     break;
                 case 3:
                     novoRegistroDeCusto();             //implementar
