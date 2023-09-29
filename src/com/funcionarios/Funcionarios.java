@@ -1,7 +1,6 @@
 package com.funcionarios;
 
 import java.util.ArrayList;
-
 public class Funcionarios {
 
     private ArrayList<Funcionario> funcionarios;
@@ -36,5 +35,16 @@ public class Funcionarios {
             }
         }
         return null;
+    }
+
+    public boolean removerFuncionarioPorMatricula(String matricula) {
+        for (int i = 0; i < funcionarios.size(); i++) {
+            Funcionario funcionario = funcionarios.get(i);
+            if (funcionario.getMatricula().equalsIgnoreCase(matricula)) {
+                funcionarios.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 }
