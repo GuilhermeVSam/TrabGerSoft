@@ -8,8 +8,8 @@ public class Main {
         app.executar();
 >>>>>>> release/1.0
 =======
-        Aplicacao app = new Aplicacao();
-        app.executar();
+       Aplicacao app = new Aplicacao();
+       app.executar();
 >>>>>>> refs/remotes/origin/develop
     }
 }
