@@ -18,10 +18,8 @@ public class Aplicacao {
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
-
     }
     private void selecao () {
-        System.out.println("\n");
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        OPÇÕES                                         |"); // alguem centraliza isso? mó mão
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -31,8 +29,9 @@ public class Aplicacao {
                            "| 4 - PESQUISAR REGISTROS                       \n" +
                            "| 5 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                      \n" +
                            "| 6 - FUNCIONALIDADE NOVA 1                \n" +
-                           "| 7 - FUNCIONALIDADE NOVA 2                    \n");
-        System.out.println("+---------------------------------------------------------------------------------------+\n\n");
+                           "| 7 - FUNCIONALIDADE NOVA 2               \n" +
+                           "| 8 - SAIR                       ");
+        System.out.println("+---------------------------------------------------------------------------------------+");
     }
     private void listarFuncionarios () {}; //implementar, precisa que funcionarios existam antes
     private boolean registraFuncionario(){
@@ -51,11 +50,10 @@ public class Aplicacao {
     // cadastrar uns departamentos, quem sabe usar enum
     private void novoRegistroDeCusto() {}; // implementar,
     private void pesquisarRegistro() {}; //  impementar esse eu realmnente n tenho ideia
-    private void excluirRegistroDeCusto() {}; // implemnetar deve ser fascil, pensei em colocar na pesqisa de registro
+    private void excluirRegistroDeCusto() {}; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
     public void exibirPainel(){
-        System.out.println("\n");
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("|                                        PAINEL DE DADOS                                |");
+        System.out.println("|                                        PAINEL DE DADOS                                |");           //endireita
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: "+usuario.getNome()+"                                  \n" +            //placeholders inseridos
                            "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: R$3000,00                                             \n" +
@@ -67,7 +65,7 @@ public class Aplicacao {
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE ENGENHARIA: R$400,00                    \n" +
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE VENDAS: R$400,00                        \n" +
                            "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
-        System.out.println("+---------------------------------------------------------------------------------------+\n\n");
+        System.out.println("+---------------------------------------------------------------------------------------+");
     } // esse eu fiz
     private void novaFuncionalidade1() {}; // implementar, hehe
     private void novaFuncionalidade2() {}; // implementar, hehe2
@@ -85,7 +83,8 @@ public class Aplicacao {
             switch (opcao) {
 
                 case 1:
-                    listarFuncionarios();  //implementar
+                    listarFuncionarios();
+                    opcao = in.nextInt();//implementar
                     break;
                 case 2:
                     registraFuncionario();        //implementar
@@ -98,7 +97,9 @@ public class Aplicacao {
                     excluirRegistroDeCusto();
                     break;
                 case 5:
-                    exibirPainel();              //implementar
+                    exibirPainel();
+                    selecao();
+                    opcao = in.nextInt();
                     break;
                 case 6:
                     novaFuncionalidade1();             //implementar
@@ -106,13 +107,16 @@ public class Aplicacao {
                 case 7:
                     novaFuncionalidade2();           //implementar
                     break;
+                case 8:
+                    break;
                 default:
                     System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
                     opcao = in.nextInt();
                     break;
 
             }
-        } while (opcao != 0);
+        } while (opcao != 8);
+        System.out.println("Bye-Bye");
     }
     /*public void inicializaDepartamentos(){           esse bixo ta inutil por enquanto
         Rh aux = new Rh("Recursos Humanos");
