@@ -18,9 +18,22 @@ public class Aplicacao {
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
-
     }
-    private void listarFuncionarios () {};
+    private void selecao () {
+        System.out.println("+---------------------------------------------------------------------------------------+");
+        System.out.println("|                                        OPÇÕES                                         |"); // alguem centraliza isso? mó mão
+        System.out.println("+---------------------------------------------------------------------------------------+");
+        System.out.println("| 1 - MUDAR FUNCIONÁRIO LOGADO                                  \n" +
+                           "| 2 - INCLUIR NOVO FUNCIONÁRIO                                            \n" +
+                           "| 3 - INSERIR NOVO REGISTRO DE CUSTO                      \n" +
+                           "| 4 - PESQUISAR REGISTROS                       \n" +
+                           "| 5 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                      \n" +
+                           "| 6 - FUNCIONALIDADE NOVA 1                \n" +
+                           "| 7 - FUNCIONALIDADE NOVA 2               \n" +
+                           "| 8 - SAIR                       ");
+        System.out.println("+---------------------------------------------------------------------------------------+");
+    }
+    private void listarFuncionarios () {}; //implementar, precisa que funcionarios existam antes
     private boolean registraFuncionario(){
         System.out.println("Cadastro de Funcionário");
         System.out.println("Informe a Matrícula: ");
@@ -32,15 +45,15 @@ public class Aplicacao {
         Departamento aux = departamentos.getDepartamentoByName(dptName);
         if(aux == null) return false;
         return funcionarios.add(new Funcionario(matricula, nome, aux));
-    }
+    } //implementar deve ser facil
+
     // cadastrar uns departamentos, quem sabe usar enum
-    private boolean novoRegistroDeCusto() {return true;};
-    private void pesquisarRegistro() {};
-    private void excluirRegistroDeCusto() {};
+    private void novoRegistroDeCusto() {}; // implementar,
+    private void pesquisarRegistro() {}; //  impementar esse eu realmnente n tenho ideia
+    private void excluirRegistroDeCusto() {}; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
     public void exibirPainel(){
-        System.out.println("\n");
         System.out.println("+---------------------------------------------------------------------------------------+");
-        System.out.println("|                                        PAINEL DE DADOS                                |");
+        System.out.println("|                                        PAINEL DE DADOS                                |");           //endireita
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: "+usuario.getNome()+"                                  \n" +            //placeholders inseridos
                            "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: R$3000,00                                             \n" +
@@ -52,10 +65,10 @@ public class Aplicacao {
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE ENGENHARIA: R$400,00                    \n" +
                            "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE VENDAS: R$400,00                        \n" +
                            "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
-        System.out.println("+---------------------------------------------------------------------------------------+\n\n");
-    }
-    private void novaFuncionalidade1() {};
-    private void novaFuncionalidade2() {};
+        System.out.println("+---------------------------------------------------------------------------------------+");
+    } // esse eu fiz
+    private void novaFuncionalidade1() {}; // implementar, hehe
+    private void novaFuncionalidade2() {}; // implementar, hehe2
 
 
     public void executar(){
@@ -64,54 +77,51 @@ public class Aplicacao {
         usuario.setNome(in.nextLine());
         System.out.println("Login efetuado com succeso!");
         System.out.println("Por favor, digite uma opção: ");
+        selecao();
+        opcao = in.nextInt();
         do {
-            switch (opcao) {
+            switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
 
                 case 1:
-                    System.out.println();
+                    listarFuncionarios();
+                    opcao = in.nextInt();//implementar
                     break;
                 case 2:
-                    System.out.println();
+                    registraFuncionario();        //implementar
                     break;
                 case 3:
-                    System.out.println();
+                    novoRegistroDeCusto();             //implementar
                     break;
                 case 4:
-                    System.out.println();
+                    pesquisarRegistro();          //implementar
+                    excluirRegistroDeCusto();
                     break;
-                case 5:
-                    System.out.println();
+                case 5://funcionando
+                    exibirPainel();
+                    selecao();
+                    opcao = in.nextInt();
                     break;
                 case 6:
-                    System.out.println();
+                    novaFuncionalidade1();             //implementar
                     break;
                 case 7:
-                    System.out.println();
+                    novaFuncionalidade2();           //implementar
                     break;
-                case 8:
-                    System.out.println();
+                case 8://funcionando
                     break;
-                case 9:
-                    System.out.println();
-                    break;
-
                 default:
-                    System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");
+                    System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
                     opcao = in.nextInt();
                     break;
 
             }
-        } while (opcao != 0);
-        //exibirPainel();
-        //System.out.println("Login efetuado com sucesso");           Ainda n funciona, o login deveria retornar um true quando funciona ou algo do tipo n sei
-        //registraFuncionario();
-        //System.out.println(funcionarios.listarFuncionarios());
-        //System.out.println(departamentos.listarDepartamentos());
-
+        } while (opcao != 8);
+        System.out.println("Bye-Bye");
     }
-    public void inicializaDepartamentos(){
+    /*public void inicializaDepartamentos(){           esse bixo ta inutil por enquanto
         Rh aux = new Rh("Recursos Humanos");
         departamentos.getDepartamentos().add(aux);
+    }*/
     }
      //queria fazer isso:
     //  RegistroCusto registro = new RegistroCusto(100.0, "Aquisição de material", new Date(), "Aquisição de Bens", "Departamento A");
@@ -124,10 +134,9 @@ public class Aplicacao {
        // List<Comentario> comentariosDoRegistro = registro.listarComentarios();
        // for (Comentario comentario : comentariosDoRegistro) {
        // comentario.exibirComentario();
-    
-    //public void exibirComentario() {   
-    // System.out.println("Autor:"+ autor);  
-   // System.out.println("Data:" + data);  
+
+    //public void exibirComentario() {
+    // System.out.println("Autor:"+ autor);
+   // System.out.println("Data:" + data);
    // System.out.println("Comentario:" + texto);
    // }
-}
