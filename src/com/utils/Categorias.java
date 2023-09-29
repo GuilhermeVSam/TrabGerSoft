@@ -1,7 +1,5 @@
 package com.utils;
 
-import com.departamentos.Deptos;
-
 public enum Categorias {
     AQUISICAO("Aquisição"), MANUTENCAO("Manutenção"), OUTROS("Outros"); // podem ser criadas outras no futuro
 

@@ -1,4 +1,3 @@
-import com.departamentos.Departamento;
 import com.departamentos.Departamentos;
 import com.departamentos.Deptos;
 import com.funcionarios.Funcionario;
@@ -6,6 +5,9 @@ import com.funcionarios.Funcionarios;
 import com.utils.Categorias;
 import com.utils.Custo;
 import com.utils.RegistroCustos;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import java.util.Scanner;
 
@@ -89,44 +91,61 @@ public class Aplicacao {
             return;
         }
 
-        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento);
+        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento, usuario.getNome());
 
         listaCustos.registrarCustos(novoCusto);
+        usuario.somaCusto(novoCusto);
     }
-    private void pesquisarRegistro() {}; //  impementar esse eu realmnente n tenho ideia
+    private void pesquisarRegistro() {
+        ArrayList<Custo> aux = listaCustos.getRegistroCustos();
+        for (Custo custo : aux) {
+            System.out.println("Descrição: " + custo.getDescricao());
+            System.out.println("Valor: " + custo.getValor());
+            System.out.println("Data: " + custo.getData());
+        }
+    }
     private void excluirRegistroDeCusto() {
         listaCustos.excluirCustoRecente();
     }; // implemnetar deve ser facil, pensei em colocar na pesqisa de registro
     public void exibirPainel(){
+        ArrayList<Custo> c = listaCustos.getRegistroCustos();
+        int mesAtual = 10;
+        
+        double custoMes = listaCustos.somaCustosPorMes(mesAtual);
+
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        PAINEL DE DADOS                                |");           //endireita
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: "+usuario.getNome()+"                                  \n" +            //placeholders inseridos
-                           "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: R$3000,00                                             \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE T.I.: R$2000,00                      \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE R.H.: R$100,00                       \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. FINANCEIRO: R$1,00                      \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. ADMINISTRATIVO: R$99,00                \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE MARKETING: R$0,00                    \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE ENGENHARIA: R$400,00                    \n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE VENDAS: R$400,00                        \n" +
-                           "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
+                                                      "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana                                        ");
+
+        System.out.println("| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL (Outubro): R$" + custoMes);
+        
+        for (Deptos dep : Deptos.values()){
+            double custoDep = 0;
+
+            for (Custo custo : c) {
+                if (custo.getDepartamento() == dep && custo.getMes() >= mesAtual -3) {
+                    custoDep += custo.getValor();
+                } 
+            }
+
+            System.out.println("VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
+        }
         System.out.println("+---------------------------------------------------------------------------------------+");
-    } // esse eu fiz
-    private void novaFuncionalidade1() {}; // implementar, hehe
-    private void novaFuncionalidade2() {}; // implementar, hehe2
+    }
 
 
     public void executar(){
         System.out.println("Bem vindo ao sistema!");
-        System.out.println("Digite seu nome de usuário para continuar: ");
         listarFuncionarios();
+        System.out.println("Digite seu nome de usuário para continuar: ");
         funcionarios.login(in.nextLine());
         System.out.println("Login efetuado com succeso!");
         System.out.println("Por favor, digite uma opção: ");
-        selecao();
-        opcao = in.nextInt();
         do {
+            selecao();
+            opcao = in.nextInt();
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
                             // seria mesmo, mas a gente confia no usuário :)
                 case 1:
@@ -146,23 +165,16 @@ public class Aplicacao {
                     break;
                 case 6://funcionando
                     exibirPainel();
-                    selecao();
                     break;
-                case 7:
-                    novaFuncionalidade1();             //implementar
-                    break;
-                case 8:
-                    novaFuncionalidade2();           //implementar
-                    break;
-                case 0://funcionando
+                case 0:
                     break;
                 default:
                     System.out.println("FALHA" + "\n" + "Por favor, insira uma opção válida.");  //implementar
                     break;
             }
-        } while (opcao != 8);
+        } while (opcao != 0);
 
-        System.out.println("Bye-Bye");  
+        System.out.println("Desligando...");  
     }
 
       public static void exibirMenu() {

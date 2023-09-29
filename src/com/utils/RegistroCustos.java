@@ -28,7 +28,18 @@ public class RegistroCustos {
         }
     }
 
-    public void mostrarCustoPorDep(Departamentos depto){
+    public double somaCustosPorMes(int mes) {
+        double somaMesAtual = 0;
 
+        for (Custo custo : registroCustos) {
+            if (custo.getMes() == mes) {
+                somaMesAtual += custo.getValor();
+            }
+        }
+        return somaMesAtual;
+    }
+
+    public void mostrarCustoPorDep(Departamentos depto){
+        
     }
 }

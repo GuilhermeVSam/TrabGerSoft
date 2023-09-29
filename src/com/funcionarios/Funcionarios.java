@@ -1,6 +1,10 @@
 package com.funcionarios;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Function;
 
 import com.utils.Custo;
 
@@ -39,6 +43,10 @@ public class Funcionarios {
             }
         }
         return false;
+    }
+
+    public String getMaioresLancadores(){
+        return "";
     }
 
 
