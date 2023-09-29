@@ -1,16 +1,19 @@
 package com.funcionarios;
 
 import com.departamentos.Deptos;
+import com.utils.Custo;
 
 public class Funcionario {
     private String matricula;
     private String nome;
     private Deptos departamento;
+    private double somaCustos;
 
     public Funcionario(String matricula, String nome, Deptos departamento) {
         this.matricula = matricula;
         this.nome = nome;
         this.departamento = departamento;
+        this.somaCustos = 0;
     }
 
     public String getMatricula() {
@@ -39,6 +42,14 @@ public class Funcionario {
 
     public void setDepartamento(Deptos departamento) {
         this.departamento = departamento;
+    }
+
+    public void somaCusto(Custo custo){
+        this.somaCustos += custo.getValor();
+    }
+
+    public double getSomaCustos(){
+        return this.somaCustos;
     }
 
     @Override
