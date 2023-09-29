@@ -13,8 +13,6 @@ public class Custo {
     private Departamento departamento;
     private List<Comentario> comentarios;
 
-    ArrayList<Custo> registroCustos = Departamento.getCustos();
-
 
     public Custo(double valor, String descricao, String data, Categorias categoria, Departamento departamento) {
         this.valor = valor;
@@ -69,16 +67,18 @@ public class Custo {
 
         System.out.println("Informe o departamento do custo: ");
         String departamentoEntrada = tec.nextLine();
-        Departamento departamento = Departamento.valueOf(departamentoEntrada);
 
         Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento);
 
-        registroCustos.add(novoCusto);
+        ArrayList<Custo> custos = departamento.getCustos();
+        custos.add(novoCusto);
+        departamento.setCustos(custos);
         System.out.println("Custo adicionado com sucesso.");
 
     }
 
     public void excluirCustoRecente(){
+        ArrayList<Custo> registroCustos = departamento.getCustos();
         if(!registroCustos.isEmpty()){
             registroCustos.remove(registroCustos.size() - 1);
             System.out.println("Custo mais recente removido com sucesso!");
