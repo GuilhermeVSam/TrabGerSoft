@@ -20,21 +20,21 @@ public class Aplicacao {
     }
     public void exibirPainel(){
         System.out.println("\n");
-        System.out.println("+----------------------------------------------------+");
-        System.out.println("|                    PAINEL DE DADOS                 |");
-        System.out.println("+----------------------------------------------------+");
-        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO:" + usr.getNome() + "                   |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: "+ "        |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE T.I.: "+"           |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE R.H.: "+"  |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. FINANCEIRO: "+"  |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. ADMINISTRATIVO: "+"  |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE MARKETING: "+"  |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE ENGENHARIA: "+"  |\n" +
-                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE VENDAS: "+"  |\n" +
-                           "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: "+"  |\n" +
-                           "| 99 - Sair                            |");
-        System.out.println("+--------------------------------------+\n\n");
+        System.out.println("+---------------------------------------------------------------------------------------+");
+        System.out.println("|                                   PAINEL DE DADOS                                     |");
+        System.out.println("+---------------------------------------------------------------------------------------+");
+        System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: " + usr.getNome() + "                                 |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL: "+ "                                           |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE T.I.: "+"                     |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE R.H.: "+"                     |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. FINANCEIRO: "+"                  |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. ADMINISTRATIVO: "+"              |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE MARKETING: "+"                |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE ENGENHARIA: "+"               |\n" +
+                           "| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE VENDAS: "+"                   |\n" +
+                           "| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: "+"                                   |\n" +
+                           "| 99 - Sair                                                                             |");
+        System.out.println("+-----------------------------------------------------------------------------------+\n\n");
     }
 
     public void executar(){
