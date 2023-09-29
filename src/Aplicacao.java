@@ -41,7 +41,7 @@ public class Aplicacao {
     private void listarFuncionarios () {
         System.out.println("Funcionários: ");
         System.out.println(funcionarios);
-    }; //implementar, precisa que funcionarios existam antes
+    };
     private boolean registraFuncionario(){
         System.out.println("Cadastro de Funcionário");
         System.out.println("Informe a Matrícula: ");
@@ -57,7 +57,7 @@ public class Aplicacao {
         }
         System.out.println("Funcionario registrado!");
         return funcionarios.add(new Funcionario(matricula, nome, aux));
-    } //implementar deve ser facil
+    }
 
     // cadastrar uns departamentos, quem sabe usar enum
     private void novoRegistroDeCusto() {}; // implementar,
