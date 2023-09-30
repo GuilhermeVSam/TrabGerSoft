@@ -6,7 +6,6 @@ import com.utils.Categorias;
 import com.utils.Custo;
 import com.utils.RegistroCustos;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import java.util.Scanner;
@@ -64,21 +63,24 @@ public class Aplicacao {
         System.out.println(funcionarios);
     }
 
-    ;
-
     private boolean registraFuncionario() {
         System.out.println("Cadastro de Funcionário");
+
         System.out.println("Informe a Matrícula: ");
         String matricula = in.nextLine();
+
         System.out.println("Informe o nome: ");
         String nome = in.nextLine();
+
         System.out.println("Informe o nome do departamento");
         String dptName = in.nextLine();
         Deptos aux = Deptos.fromString(dptName);
+
         if (aux == null) {
             System.out.println("Departamento não encontrado.");
             return false;
         }
+
         System.out.println("Funcionario registrado!");
         return funcionarios.add(new Funcionario(matricula, nome, aux));
     }
@@ -193,10 +195,10 @@ public class Aplicacao {
         }
 
         System.out.println("Login efetuado com succeso!");
-        System.out.println("Por favor, digite uma opção: ");
 
         do {
             selecao();
+            System.out.print(usuario.getNome() + " # ");
             opcao = in.nextInt();
             in.nextLine();
             switch (opcao) {//seria interessante um trycatch pra se a opção enrasse um char, eu n sei fazer trycatch
