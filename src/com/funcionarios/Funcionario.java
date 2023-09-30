@@ -1,6 +1,8 @@
 package com.funcionarios;
 
 import com.departamentos.Deptos;
+
+import com.departamentos.Deptos;
 import com.utils.Custo;
 
 public class Funcionario implements Comparable<Funcionario> {
