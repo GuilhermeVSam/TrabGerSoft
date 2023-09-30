@@ -3,7 +3,7 @@ package com.funcionarios;
 import com.departamentos.Deptos;
 import com.utils.Custo;
 
-public class Funcionario {
+public class Funcionario implements Comparable<Funcionario> {
     private String matricula;
     private String nome;
     private Deptos departamento;
@@ -50,6 +50,11 @@ public class Funcionario {
 
     public double getSomaCustos(){
         return this.somaCustos;
+    }
+
+    @Override
+    public int compareTo(Funcionario outro) {
+        return (int) (somaCustos - outro.somaCustos);
     }
 
     @Override

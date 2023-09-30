@@ -14,9 +14,8 @@ public class RegistroCustos {
     public ArrayList<Custo> getRegistroCustos(){
         return registroCustos;
     }
-    public void registrarCustos(Custo custo){
-        registroCustos.add(custo);
-        System.out.println("Custo adicionado com sucesso.");
+    public boolean registrarCustos(Custo custo){
+        return registroCustos.add(custo);
     }
 
     public void excluirCustoRecente(){
