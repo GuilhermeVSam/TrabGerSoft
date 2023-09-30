@@ -19,7 +19,7 @@ public class Aplicacao {
     RegistroCustos listaCustos;
     int opcao;
 
-    Aplicacao(){
+    Aplicacao() {
         in = new Scanner(System.in);
         funcionarios = new Funcionarios();
         departamentos = new Departamentos();
@@ -33,8 +33,8 @@ public class Aplicacao {
         funcionarios.add(Robson);
         funcionarios.add(Carla);
 
-        Custo compras = new Custo(2500.00, "Compras", "29/09/2023", Categorias.AQUISICAO,  Deptos.ADMINISTRATIVO);
-        Custo ferramentas = new Custo(500.00, "ferramentas", "10/10/2023", Categorias.AQUISICAO,  Deptos.ENGENHARIA);
+        Custo compras = new Custo(2500.00, "Compras", "29/09/2023", Categorias.AQUISICAO, Deptos.ADMINISTRATIVO);
+        Custo ferramentas = new Custo(500.00, "ferramentas", "10/10/2023", Categorias.AQUISICAO, Deptos.ENGENHARIA);
 
         Pedro.somaCusto(compras);
         Robson.somaCusto(ferramentas);
@@ -42,7 +42,8 @@ public class Aplicacao {
         listaCustos.registrarCustos(compras);
         listaCustos.registrarCustos(ferramentas);
     }
-    private void selecao () {
+
+    private void selecao() {
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        OPÇÕES                                         |");
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -52,16 +53,20 @@ public class Aplicacao {
         System.out.println("| 4 - PESQUISAR REGISTROS                                                               |");
         System.out.println("| 5 - EXCLUIR REGISTROS                                                                 |");
         System.out.println("| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                                      |");
-        System.out.println("| 7 - FUNCIONALIDADE NOVA 1                                                             |");
+        System.out.println("| 7 - TROCAR USUÁRIO ATIVO                                                              |");
         System.out.println("| 8 - FUNCIONALIDADE NOVA 2                                                             |");
         System.out.println("| 0 - SAIR                                                                              |");
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
-    private void listarFuncionarios () {
+
+    private void listarFuncionarios() {
         System.out.println("Funcionários: ");
         System.out.println(funcionarios);
-    };
-    private boolean registraFuncionario(){
+    }
+
+    ;
+
+    private boolean registraFuncionario() {
         System.out.println("Cadastro de Funcionário");
         System.out.println("Informe a Matrícula: ");
         String matricula = in.nextLine();
@@ -70,7 +75,7 @@ public class Aplicacao {
         System.out.println("Informe o nome do departamento");
         String dptName = in.nextLine();
         Deptos aux = Deptos.fromString(dptName);
-        if(aux == null) {
+        if (aux == null) {
             System.out.println("Departamento não encontrado.");
             return false;
         }
@@ -112,6 +117,7 @@ public class Aplicacao {
 
         System.out.println("Custo adicionado com sucesso!");
     }
+
     private void pesquisarRegistro() {
         ArrayList<Custo> aux = listaCustos.getRegistroCustos();
         for (Custo custo : aux) {
@@ -120,10 +126,27 @@ public class Aplicacao {
             System.out.println("Data: " + custo.getData());
         }
     }
+
+    private void trocarUsuario() {
+        System.out.println("Trocando usuário...");
+
+        usuario = null;
+
+        while (usuario == null) {
+            System.out.print("Digite seu nome de usuário para continuar: ");
+            String nome = in.nextLine();
+            usuario = funcionarios.login(nome);
+        }
+
+        System.out.println("Login efetuado com succeso!");
+    }
+
     private void excluirRegistroDeCusto() {
         listaCustos.excluirCustoRecente();
     }
-    public void exibirPainel(){
+
+
+    public void exibirPainel() {
         ArrayList<Custo> c = listaCustos.getRegistroCustos();
         int mesAtual = 10;
 
@@ -146,11 +169,11 @@ public class Aplicacao {
         System.out.println("| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: " + funcionariosAsStr);
         System.out.println("| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL (Outubro): R$" + custoMes);
 
-        for (Deptos dep : Deptos.values()){
+        for (Deptos dep : Deptos.values()) {
             double custoDep = 0;
 
             for (Custo custo : c) {
-                if (custo.getDepartamento() == dep && custo.getMes() >= mesAtual -3) {
+                if (custo.getDepartamento() == dep && custo.getMes() >= mesAtual - 3) {
                     custoDep += custo.getValor();
                 }
             }
@@ -160,12 +183,11 @@ public class Aplicacao {
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
 
-
-    public void executar(){
+    public void executar() {
         System.out.println("Bem vindo ao sistema!");
 
         while (usuario == null) {
-            System.out.println("Digite seu nome de usuário para continuar: ");
+            System.out.print("Digite seu nome de usuário para continuar: ");
             String nome = in.nextLine();
             usuario = funcionarios.login(nome);
         }
@@ -196,6 +218,9 @@ public class Aplicacao {
                     break;
                 case 6://funcionando
                     exibirPainel();
+                    break;
+                case 7:
+                    trocarUsuario();
                     break;
                 case 0:
                     break;
