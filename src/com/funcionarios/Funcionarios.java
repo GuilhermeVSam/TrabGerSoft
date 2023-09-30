@@ -1,6 +1,12 @@
 package com.funcionarios;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Function;
+
+import com.utils.Custo;
 
 public class Funcionarios {
 
@@ -24,6 +30,7 @@ public class Funcionarios {
                 return funcionario;
             }
         }
+        System.out.println("Nome de usuário inexistente.");
         return null;
     }
 
@@ -38,6 +45,18 @@ public class Funcionarios {
         return false;
     }
 
+
+    /**
+     * Retorna uma lista com todos os funcionários ordenados pela quantidade de vendas, ordem decrescente.
+     */
+    public ArrayList<Funcionario> getMaioresLancadores() {
+        ArrayList<Funcionario> copy = (ArrayList<Funcionario>) funcionarios.clone();
+
+        Collections.sort(copy);
+        Collections.reverse(copy);
+
+        return copy;
+    }
 
     @Override
     public String toString() {

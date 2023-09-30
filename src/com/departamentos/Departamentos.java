@@ -20,7 +20,7 @@ public class Departamentos {
     public Departamento getDepartamentoByName(String nome){
         for (Departamento dpt: departamentos
              ) {
-            if(dpt.getNome().equals(nome)) return dpt;
+            if(dpt.getNome().equalsIgnoreCase(nome)) return dpt;
         }
         return null;
     }

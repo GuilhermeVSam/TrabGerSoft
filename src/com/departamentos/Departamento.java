@@ -32,9 +32,7 @@ public abstract class Departamento{
         return this.funcionarios.add(funcionario);
     }
 
-    public boolean adicionarCusto(Custo custo) {
-        return custos.add(custo);
-    }
+
 }
 
 
