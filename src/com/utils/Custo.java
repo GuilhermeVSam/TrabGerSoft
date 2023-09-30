@@ -10,20 +10,15 @@ public class Custo {
     private Categorias categoria;
     private Deptos departamento;
     private List<Comentario> comentarios;
-    private String autor;
 
 
-    public Custo(double valor, String descricao, String data, Categorias categoria, Deptos departamento, String autor) {
+    public Custo(double valor, String descricao, String data, Categorias categoria, Deptos departamento) {
         this.valor = valor;
         this.descricao = descricao;
         this.data = data;
         this.categoria = categoria;
         this.departamento = departamento;
         this.comentarios = new ArrayList<>();
-        this.autor = autor;
-    }
-
-    public Custo(String descricao2, double valor2) {
     }
 
     public double getValor() {
@@ -70,9 +65,5 @@ public class Custo {
         } catch (IllegalArgumentException e) {
             return null; 
         }
-    }
-
-    public String getAutor(){
-        return autor;
     }
 }

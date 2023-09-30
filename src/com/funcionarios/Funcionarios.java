@@ -45,10 +45,18 @@ public class Funcionarios {
         return false;
     }
 
-    public String getMaioresLancadores(){
-        return "";
-    }
 
+    /**
+     * Retorna uma lista com todos os funcionários ordenados pela quantidade de vendas, ordem decrescente.
+     */
+    public ArrayList<Funcionario> getMaioresLancadores() {
+        ArrayList<Funcionario> copy = (ArrayList<Funcionario>) funcionarios.clone();
+
+        Collections.sort(copy);
+        Collections.reverse(copy);
+
+        return copy;
+    }
 
     @Override
     public String toString() {

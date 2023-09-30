@@ -25,10 +25,22 @@ public class Aplicacao {
         departamentos = new Departamentos();
         listaCustos = new RegistroCustos();
 
+        Funcionario Pedro = new Funcionario("123", "Pedro", Deptos.ADMINISTRATIVO);
+        Funcionario Robson = new Funcionario("456", "Robson", Deptos.ENGENHARIA);
+        Funcionario Carla = new Funcionario("789", "Carla", Deptos.MARKETING);
 
-        funcionarios.add(new Funcionario("123","", Deptos.ADMINISTRATIVO));
-        funcionarios.add(new Funcionario("456", "Robson", Deptos.ENGENHARIA));
-        funcionarios.add(new Funcionario("789", "Carla", Deptos.MARKETING));
+        funcionarios.add(Pedro);
+        funcionarios.add(Robson);
+        funcionarios.add(Carla);
+
+        Custo compras = new Custo(2500.00, "Compras", "29/09/2023", Categorias.AQUISICAO,  Deptos.ADMINISTRATIVO);
+        Custo ferramentas = new Custo(500.00, "ferramentas", "10/10/2023", Categorias.AQUISICAO,  Deptos.ENGENHARIA);
+
+        Pedro.somaCusto(compras);
+        Robson.somaCusto(ferramentas);
+
+        listaCustos.registrarCustos(compras);
+        listaCustos.registrarCustos(ferramentas);
     }
     private void selecao () {
         System.out.println("+---------------------------------------------------------------------------------------+");
@@ -93,10 +105,12 @@ public class Aplicacao {
             return;
         }
 
-        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento, usuario.getNome());
+        Custo novoCusto = new Custo(valor, descricao, data, categoria, departamento);
 
         listaCustos.registrarCustos(novoCusto);
         usuario.somaCusto(novoCusto);
+
+        System.out.println("Custo adicionado com sucesso!");
     }
     private void pesquisarRegistro() {
         ArrayList<Custo> aux = listaCustos.getRegistroCustos();
@@ -115,11 +129,21 @@ public class Aplicacao {
 
         double custoMes = listaCustos.somaCustosPorMes(mesAtual);
 
+        ArrayList<Funcionario> funcionariosDoMes = funcionarios.getMaioresLancadores(); // o nome desse método é genial
+
+        StringBuilder funcionariosAsStr = new StringBuilder();
+        for (int i = 0; i < 3 || i < funcionariosDoMes.size(); i++) {
+            funcionariosAsStr.append(funcionariosDoMes.get(i).getNome());
+            funcionariosAsStr.append(": ");
+            funcionariosAsStr.append(funcionariosDoMes.get(i).getSomaCustos());
+            funcionariosAsStr.append(" ");
+        }
+
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("|                                        PAINEL DE DADOS                                |");
         System.out.println("+---------------------------------------------------------------------------------------+");
         System.out.println("| FUNCIONARIO ATUALMENTE LOGADO: " + usuario.getNome());
-        System.out.println("| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: Carlos, Roberto e Juliana");
+        System.out.println("| OS 3 FUNCIONARIOS COM A MAIOR SOMA DE CUSTOS: " + funcionariosAsStr);
         System.out.println("| VALOR TOTAL DOS CUSTOS DO MÊS ATUAL (Outubro): R$" + custoMes);
 
         for (Deptos dep : Deptos.values()){
@@ -131,7 +155,7 @@ public class Aplicacao {
                 }
             }
 
-            System.out.println("|VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
+            System.out.println("| VALOR TOTAL DOS CUSTOS DOS ÚLTIMOS 3 MESES DO DEP. DE " + dep.getNome() + ": R$" + custoDep);
         }
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
@@ -139,7 +163,6 @@ public class Aplicacao {
 
     public void executar(){
         System.out.println("Bem vindo ao sistema!");
-        listarFuncionarios();
 
         while (usuario == null) {
             System.out.println("Digite seu nome de usuário para continuar: ");
@@ -185,4 +208,3 @@ public class Aplicacao {
         System.out.println("Desligando...");
     }
 }
-
