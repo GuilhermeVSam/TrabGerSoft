@@ -18,6 +18,15 @@ public class RegistroCustos {
         return registroCustos.add(custo);
     }
 
+    public Custo procuraPorDescricao(String descricao) {
+        for (Custo custo : registroCustos) {
+            if (custo.getDescricao().equalsIgnoreCase(descricao)) {
+                return custo;
+            }
+        }
+        return null;
+    }
+
     public void excluirCustoRecente(){
         if(!registroCustos.isEmpty()){
             registroCustos.remove(registroCustos.size() - 1);
