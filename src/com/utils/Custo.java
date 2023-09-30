@@ -1,6 +1,8 @@
 package com.utils;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import com.departamentos.Deptos;
 
 public class Custo {
@@ -41,7 +43,7 @@ public class Custo {
         } catch (Exception e) {
             System.out.println("Data mal formtada");
             return -1;
-       }
+        }
     }
 
     public Categorias getCategoria() {
@@ -51,19 +53,30 @@ public class Custo {
     public Deptos getDepartamento() {
         return departamento;
     }
-     public void adicionarComentario(Comentario comentario) {
+
+    public void adicionarComentario(Comentario comentario) {
         comentarios.add(comentario);
-     }
-     public List<Comentario> listarComentarios() {
+    }
+
+    public List<Comentario> listarComentarios() {
         return comentarios;
-     }
+    }
 
 
     public Deptos mapearDepartamento(String departamentoEntrada) {
         try {
-            return Deptos.valueOf(departamentoEntrada.toUpperCase()); 
+            return Deptos.valueOf(departamentoEntrada.toUpperCase());
         } catch (IllegalArgumentException e) {
-            return null; 
+            return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        String aux = "";
+        aux += "Descrição: " + descricao + "\n";
+        aux += "Valor: " + valor + "\n";
+        aux += "Data: " + data + "\n";
+        return aux;
     }
 }

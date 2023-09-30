@@ -3,11 +3,13 @@ import com.departamentos.Deptos;
 import com.funcionarios.Funcionario;
 import com.funcionarios.Funcionarios;
 import com.utils.Categorias;
+import com.utils.Comentario;
 import com.utils.Custo;
 import com.utils.RegistroCustos;
 
 import java.util.ArrayList;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
@@ -53,7 +55,8 @@ public class Aplicacao {
         System.out.println("| 5 - EXCLUIR REGISTROS                                                                 |");
         System.out.println("| 6 - VISUALIZAR PAINEL DE INFORMAÇÕES SUPER ÚTEIS                                      |");
         System.out.println("| 7 - TROCAR USUÁRIO ATIVO                                                              |");
-        System.out.println("| 8 - FUNCIONALIDADE NOVA 2                                                             |");
+        System.out.println("| 8 - MOSTRAR COMENTÁRIOS DE UMA COMPRA                                                 |");
+        System.out.println("| 9 - ADICIONAR COMENTÁRIO A UMA COMPRA                                                 |");
         System.out.println("| 0 - SAIR                                                                              |");
         System.out.println("+---------------------------------------------------------------------------------------+");
     }
@@ -63,7 +66,7 @@ public class Aplicacao {
         System.out.println(funcionarios);
     }
 
-    private boolean registraFuncionario() {
+    private void registraFuncionario() {
         System.out.println("Cadastro de Funcionário");
 
         System.out.println("Informe a Matrícula: ");
@@ -78,11 +81,11 @@ public class Aplicacao {
 
         if (aux == null) {
             System.out.println("Departamento não encontrado.");
-            return false;
+            return;
         }
 
         System.out.println("Funcionario registrado!");
-        return funcionarios.add(new Funcionario(matricula, nome, aux));
+        funcionarios.add(new Funcionario(matricula, nome, aux));
     }
 
     // cadastrar uns departamentos, quem sabe usar enum
@@ -123,9 +126,7 @@ public class Aplicacao {
     private void pesquisarRegistro() {
         ArrayList<Custo> aux = listaCustos.getRegistroCustos();
         for (Custo custo : aux) {
-            System.out.println("Descrição: " + custo.getDescricao());
-            System.out.println("Valor: " + custo.getValor());
-            System.out.println("Data: " + custo.getData());
+            System.out.println(custo);
         }
     }
 
@@ -147,6 +148,50 @@ public class Aplicacao {
         listaCustos.excluirCustoRecente();
     }
 
+    private void adicionarComentario() {
+        System.out.println("Adicionar comentário a uma compra.");
+        System.out.println("Digite a descrição do custo que deseja adicionar o comentário: ");
+        System.out.print("# ");
+        String descricao = in.nextLine();
+
+        Custo custo = listaCustos.procuraPorDescricao(descricao);
+
+        if (custo == null) {
+            System.out.println("Custo não encontrado");
+            return;
+        }
+
+        System.out.println("Custo encontrado. Adicione seu comentário: ");
+        System.out.print("# ");
+
+        String comentario = in.nextLine();
+
+        Comentario com = new Comentario(comentario, usuario.getNome());
+
+        custo.adicionarComentario(com);
+    }
+
+    private void mostrarComentarios() {
+        System.out.println("Mostrar comentários de uma compra.");
+        System.out.println("Digite a descrição do custo que deseja ver os comentários: ");
+        System.out.print("# ");
+        String descricao = in.nextLine();
+
+        Custo custo = listaCustos.procuraPorDescricao(descricao);
+
+        if (custo == null) {
+            System.out.println("Custo não encontrado");
+            return;
+        }
+
+        System.out.println(custo);
+
+        List<Comentario> comentarios = custo.listarComentarios();
+
+        for (Comentario c : comentarios) {
+            System.out.println(c);
+        }
+    }
 
     public void exibirPainel() {
         ArrayList<Custo> c = listaCustos.getRegistroCustos();
@@ -210,10 +255,10 @@ public class Aplicacao {
                     registraFuncionario();
                     break;
                 case 3:
-                    novoRegistroDeCusto();             //implementar
-                    break;                            // tentei implementar :) (vamos ver o que acontece)
+                    novoRegistroDeCusto();
+                    break;
                 case 4:
-                    pesquisarRegistro();          //implementar
+                    pesquisarRegistro();
                     break;
                 case 5:
                     excluirRegistroDeCusto();
@@ -223,6 +268,12 @@ public class Aplicacao {
                     break;
                 case 7:
                     trocarUsuario();
+                    break;
+                case 8:
+                    mostrarComentarios();
+                    break;
+                case 9:
+                    adicionarComentario();
                     break;
                 case 0:
                     break;
